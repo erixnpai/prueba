@@ -933,7 +933,7 @@
                     color: '#000000',
                     font: function (context) {
                         var avgSize = Math.round((context.chart.height + context.chart.width) / 2);
-                        var size = Math.round(avgSize / 40);
+                        var size = Math.round(avgSize / 45);
                         size = size > 12 ? 12 : size; // establece un límite máximo de tamaño de fuente
                         return {
                             size: size,
@@ -951,6 +951,7 @@
             }
         }
     });
+
 
 const $barchar2 = document.querySelector("#myChartBar2");
 const datos = ['Inodoro o letrina', 'Acceso a agua potable', 'Conexión a energía eléctrica', 'Celular', 'Paredes en buen estado', 'Techo en buen estado', 'Televisión', 'Radio', 'Internet', 'Computadora'];
@@ -1124,10 +1125,15 @@ const ctx2 = document.getElementById('myChartPie2');
                 },
                 datalabels: {
                     color: '#000000',
-                    font: {
-                        weight: 'bold',
-                        size: '11px',
-                    },
+                    font: function(context) {
+                    var avgSize = Math.round((context.chart.height + context.chart.width) / 2);
+                    var size = Math.round(avgSize / 45);
+                    size = size > 12 ? 12 : size; // establece un límite máximo de tamaño de fuente
+                    return {
+                        size: size,
+                        weight: 'bold'
+                    };
+                },
                     anchor: 'center',
                     align: 'end',
                     offset: 4,
