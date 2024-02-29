@@ -916,6 +916,7 @@
                 datos7Mo,
             ]
         },
+        
         options: {
             scales: {
                 yAxes: [{
@@ -930,10 +931,15 @@
             plugins: {
                 datalabels: {
                     color: '#000000',
-                    font: {
-                        weight: 'bold',
-                        size: '11px',
-                    },
+                    font: function (context) {
+                        var avgSize = Math.round((context.chart.height + context.chart.width) / 2);
+                        var size = Math.round(avgSize / 40);
+                        size = size > 12 ? 12 : size; // establece un límite máximo de tamaño de fuente
+                        return {
+                            size: size,
+                            weight: 'bold'
+                        };
+    },
                     rotation: -90, // Rotación de las etiquetas (90 grados)
                     anchor: 'end', // Punto de anclaje de las etiquetas (al principio)
                     align: 'end', // Alineación de las etiquetas (arriba)
